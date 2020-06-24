@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { PATTERNS_LIST }                                        from '@constants/patterns';
+import includes                                                 from 'lodash-es/includes';
 
-const getPatternMsg = (pattern: RegExp): string => PATTERNS_LIST.find(x => x['PATTERN'] === pattern)['MESSAGE'];
+const getPatternMsg = (pattern: RegExp): string => PATTERNS_LIST.find(x => includes(pattern, x['PATTERN']))['MESSAGE'];
 
 @Component({
   selector: 'app-validation-message',
