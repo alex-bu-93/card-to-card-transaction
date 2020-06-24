@@ -1,0 +1,37 @@
+<app-request-wrapper #response [request$]="items$">
+  <nz-table #table nzSize="small"
+            nzHideOnSinglePage
+            nzBordered
+            nzNoResult="No transactions to display"
+            [nzScroll]="{ x: '100px' }"
+            [nzData]="response.data">
+    <thead>
+    <tr>
+      <th nzWidth="25px">#</th>
+      <th nzWidth="250px">Payer card</th>
+      <th nzWidth="250px">Recipient Card</th>
+      <th nzWidth="150px">Sum</th>
+      <th nzWidth="90px">Date</th>
+      <th nzWidth="150px"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of table.data let index = index">
+      <td class="text-nowrap">{{index + 1}}</td>
+      <td>{{item.cardFromNumber}}</td>
+      <td>{{item.cardToNumber}}</td>
+      <td>{{item.sum | number : '0.0-2' : 'ru'}}</td>
+      <td class="text-nowrap">{{(item.monthTo | monthYearToDate : item.yearTo) | date}}</td>
+      <td class="text-nowrap">
+        <button nz-button nzSize="small" nzType="primary"
+                (click)="onRepeat(item)"> Repeat
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button nzSize="small" nzType="danger"
+                (click)="onDelete(index)">Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</app-request-wrapper>

@@ -1,8 +1,10 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "no-string-literal": false,
     "array-type": false,
     "arrow-parens": false,
+    "import-spacing": false,
     "deprecation": {
       "severity": "warning"
     },

@@ -1,0 +1,21 @@
+<div class="animated fadeIn d-flex justify-content-center">
+  <nz-card style="width:350px" class="shadow mt-5">
+    <nz-card-meta class="mb-4"
+                  nzTitle="Test task for front-end developer position"
+                  [nzDescription]="descriptionTmp">
+    </nz-card-meta>
+    <div class="d-flex justify-content-end">
+      <a nz-button nzType="link"
+         class="text-primary"
+         [nzLoading]="isInLoading"
+         (click)="onComeIn()">
+        <i nz-icon nzType="login" nzTheme="outline"></i>Come in
+      </a>
+    </div>
+  </nz-card>
+</div>
+
+
+<ng-template #descriptionTmp>
+  <p>{{(date | date)}}, Uralsib, by <a href="https://github.com/alex-bu-93" target="_blank">alex-bu-93</a></p>
+</ng-template>

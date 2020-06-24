@@ -1,0 +1,64 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md mb-3">
+      <app-card cardTitle="Card from">
+        <div class="row">
+          <div class="col-12">
+            <app-reactive-input fieldId="cardFromNumber" label="Number"
+                                placeholder="0000 0000 0000 0000"
+                                onInputPipe="card-number"
+                                onInputDirective="numbers-only"
+                                [maxLength]="19"
+                                [control]="fg.get('cardFromNumber')">
+            </app-reactive-input>
+          </div>
+          <div class="col-6">
+            <app-reactive-input fieldId="holderFullName" label="Holder full name"
+                                [control]="fg.get('holderFullName')">
+            </app-reactive-input>
+          </div>
+          <div class="col-3">
+            <app-reactive-select fieldId="monthTo" label="Active to"
+                                 [options]="monthsOptions"
+                                 [control]="fg.get('monthTo')">
+            </app-reactive-select>
+          </div>
+          <div class="col-3">
+            <app-reactive-select fieldId="yearTo" label=" "
+                                 [options]="yearsOption"
+                                 [hasRequiredIndicator]="false"
+                                 [control]="fg.get('yearTo')">
+            </app-reactive-select>
+          </div>
+        </div>
+      </app-card>
+    </div>
+    <div class="col-md mb-5">
+      <app-card cardTitle="Card to">
+        <div class="row">
+          <div class="col-12">
+            <app-reactive-input fieldId="cardToNumber" label="Number"
+                                placeholder="0000 0000 0000 0000"
+                                onInputPipe="card-number"
+                                onInputDirective="numbers-only"
+                                [maxLength]="19"
+                                [control]="fg.get('cardToNumber')">
+            </app-reactive-input>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <app-reactive-input fieldId="sum" placeholder="Sum"
+                        onInputDirective="numbers-only"
+                        [control]="fg.get('sum')">
+    </app-reactive-input>
+    <button nz-button nzType="primary"
+            class="ml-3"
+            [nzLoading]="isSubmitLoading"
+            (click)="onSubmit()">
+      <i nz-icon nzType="send"></i> Transfer
+    </button>
+  </div>
+</div>

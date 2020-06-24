@@ -1,0 +1,27 @@
+<ng-container *ngIf="request$ | withLoading | async as request">
+  <div *ngIf="request.errMessage else contentTmp" class="animated fadeIn">
+    <nz-result nzStatus="error" nzTitle="Looks like something went wrong"
+               [nzSubTitle]="request.errMessage">
+      <div nz-result-extra>
+        <button nz-button class="shadow-sm"
+                (click)="request$ = getUpdatedRequest(request$)"> Retry
+        </button>
+        <button nz-button nzType="primary" class="shadow"
+                (click)="request.errMessage = null"> Back
+        </button>
+      </div>
+    </nz-result>
+  </div>
+  <ng-template #contentTmp>
+    <nz-spin [nzSpinning]="request.isLoading" [nzIndicator]="loadingTmp">
+      <div class="animated fadeIn" style="min-height: 150px">
+        <ng-content></ng-content>
+      </div>
+    </nz-spin>
+  </ng-template>
+</ng-container>
+
+
+<ng-template #loadingTmp>
+  <app-local-spinner></app-local-spinner>
+</ng-template>

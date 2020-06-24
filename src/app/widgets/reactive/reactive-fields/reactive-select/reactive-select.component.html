@@ -1,0 +1,20 @@
+<div *ngIf="control" class="mb-0 position-relative" [ngClass]="{'mb-3': withMarginBottom}">
+  <app-reactive-label *ngIf="label"
+                      [label]="label"
+                      [fieldId]="fieldId"
+                      [tooltip]="tooltip"
+                      [hasRequiredIndicator]="hasRequiredIndicator">
+  </app-reactive-label>
+  <nz-form-item>
+    <nz-form-control [nzValidateStatus]="validationErrors ? 'error' : null">
+      <nz-select nzAllowClear
+                 class="w-100"
+                 [id]="fieldId"
+                 [formControl]="control"
+                 [nzPlaceHolder]="placeholder">
+        <nz-option *ngFor="let item of options" [nzLabel]="item" [nzValue]="item"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <app-validation-message [validationErrors]="validationErrors"></app-validation-message>
+</div>
